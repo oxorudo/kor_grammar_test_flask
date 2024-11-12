@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>문제 풀기</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>품사 맞추기 문제</h1>
+        <p>{{ total_questions }}. 다음 문장에서 <strong>'{{ quiz_word }}'</strong>의 품사는 무엇일까요?</p>
+        <p>문장: {{ sentence|safe }}</p>
+        <form action="{{ url_for('check_answer') }}" method="POST">
+            <!-- 5지선다 객관식 선택지 -->
+            <div class="choices">
+                {% for choice in choices %}
+                <div class="choice">
+                    <input type="radio" id="choice{{ loop.index }}" name="answer" value="{{ choice }}" required>
+                    <label for="choice{{ loop.index }}">{{ choice }}</label>
+                </div>
+                {% endfor %}
+            </div>
+            <br>
+            <button type="submit" class="btn">정답 확인</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+

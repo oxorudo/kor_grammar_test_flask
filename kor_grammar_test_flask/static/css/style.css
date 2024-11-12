@@ -1,0 +1,150 @@
+/* Container 스타일 */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    animation: fadeIn 0.8s forwards; /* 페이드 인 애니메이션 시간 단축 */
+}
+
+/* 페이드 인 애니메이션 */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.8s forwards; /* 페이드 인 애니메이션 시간 단축 */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* 버튼 스타일 */
+.btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.2s ease, transform 0.15s ease; /* 클릭 시 더 빠른 반응 */
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn:active {
+    transform: scale(0.95); /* 클릭 시 더 빠르게 줄어듦 */
+}
+
+/* textarea 및 입력 필드 스타일 */
+textarea, input[type="text"], input[type="password"], input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease; /* 경계선 색상 변경 속도 빠르게 */
+}
+
+textarea:focus, input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* 버튼 컨테이너 스타일 */
+.btn-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 제목 스타일 */
+h1, h2 {
+    color: #333;
+}
+
+/* 리스트 스타일 */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+/* Footer 스타일 */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+    color: #777;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.7s ease forwards; /* 슬라이드 업 애니메이션 시간 단축 */
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 작은 화면에 맞춰 텍스트 크기 조정 */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+/* 아이콘 hover 시 확대 애니메이션 */
+.icon-hover {
+    transition: transform 0.2s ease; /* hover 애니메이션 속도 단축 */
+}
+
+.icon-hover:hover {
+    transform: scale(1.1); /* 아이콘 hover 시 확대 */
+}
+
+/* 글자 하나씩 나타나는 텍스트 애니메이션 */
+.letter-by-letter span {
+    opacity: 0;
+    display: inline-block;
+    animation: fadeInLetter 0.5s forwards;
+}
+
+.letter-by-letter span:nth-child(1) { animation-delay: 0s; }
+.letter-by-letter span:nth-child(2) { animation-delay: 0.1s; }
+.letter-by-letter span:nth-child(3) { animation-delay: 0.2s; }
+/* 나머지도 계속 숫자를 늘려가며 설정 */
+
+@keyframes fadeInLetter {
+    to {
+        opacity: 1;
+    }
+}

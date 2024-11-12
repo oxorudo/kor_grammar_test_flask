@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 페이지</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* 스크롤을 위한 스타일 */
+        .sentence-list {
+            max-height: 300px; /* 최대 높이를 설정하여 스크롤 추가 */
+            overflow-y: auto;  /* 세로 스크롤을 자동으로 추가 */
+            border: 1px solid #ddd; /* 목록을 구분하기 위한 테두리 */
+            padding: 10px;  /* 목록 내 여백 */
+            margin-bottom: 20px;  /* 추가 입력란과의 간격 */
+        }
+
+        /* 버튼 컨테이너 스타일 */
+        .btn-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* 추가 입력란과 버튼의 간격 */
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>관리자 페이지</h1>
+
+        <h2>현재 저장된 문장 목록</h2>
+        <div class="sentence-list">
+            <ul>
+                {% for sentence in sentences %}
+                <li>{{ sentence }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h2>새 문장 추가</h2>
+        <form method="POST" action="{{ url_for('admin') }}">
+            <textarea name="new_text" rows="5" placeholder="새 문장을 입력하세요"></textarea><br><br>
+            <button type="submit" class="btn">문장 추가</button>
+        </form>
+
+        <!-- 추가된 문장에 대한 메시지 출력 -->
+        {% if message %}
+        <p>{{ message }}</p>
+        {% endif %}
+
+        <div class="btn-container">
+            <a href="{{ url_for('index') }}" class="btn">메인으로 돌아가기</a>
+            <a href="{{ url_for('logs') }}" class="btn">로그 보기</a>
+        </div>
+    </div>
+</body>
+</html>

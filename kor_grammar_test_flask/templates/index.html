@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>메인 페이지</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .admin-btn {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class=>한국어 품사 맞추기 퀴즈</h1>
+        <p>총 10개의 문제가 출제됩니다. 문제를 풀어보세요.</p>
+        
+        <form action="{{ url_for('question') }}">
+            <button type="submit" class="btn">시작하기</button>
+        </form>
+        
+        <!-- 관리자 페이지 버튼 -->
+        <form action="{{ url_for('admin') }}" class="admin-btn">
+            <button type="submit" class="btn">관리자 페이지</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
+

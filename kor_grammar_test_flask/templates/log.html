@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그 보기</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* 스크롤을 위한 스타일 */
+        .log-list {
+            max-height: 400px; /* 로그 테이블의 최대 높이 설정 */
+            overflow-y: auto;  /* 세로 스크롤을 자동으로 추가 */
+            border: 1px solid #ddd; /* 테이블을 구분하기 위한 테두리 */
+            padding: 10px;  /* 테이블 내 여백 */
+        }
+
+        table {
+            width: 100%; /* 테이블의 너비를 100%로 설정 */
+            border-collapse: collapse; /* 테이블 테두리 결합 */
+        }
+
+        th, td {
+            border: 1px solid #ddd; /* 각 셀에 테두리 */
+            padding: 8px; /* 셀 내부 여백 */
+            text-align: left; /* 텍스트 왼쪽 정렬 */
+        }
+
+        th {
+            background-color: #f2f2f2; /* 테이블 헤더 배경색 */
+        }
+
+        /* 버튼 스타일 */
+        .btn-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-start; /* 버튼이 왼쪽에 정렬되도록 설정 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>사용자 로그</h1>
+
+        <div class="log-list">
+            <table>
+                <tr>
+                    <th>문제 문장</th>
+                    <th>출제 단어</th>
+                    <th>사용자 답변</th>
+                    <th>정답</th>
+                    <th>정답 여부</th>
+                    <th>시간</th>
+                </tr>
+                {% for log in logs %}
+                <tr>
+                    <td>{{ log[2] }}</td>
+                    <td>{{ log[3] }}</td>
+                    <td>{{ log[0] }}</td>
+                    <td>{{ log[1] }}</td>
+                    <td>{{ log[4] }}</td>
+                    <td>{{ log[5] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <!-- 버튼 컨테이너 -->
+        <div class="btn-container">
+            <a href="{{ url_for('admin') }}" class="btn">관리자 페이지로 돌아가기</a>
+        </div>
+    </div>
+</body>
+</html>
